@@ -36,7 +36,7 @@
                         <webModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>cryptography-suite-web</artifactId>
-                            <contextRoot>/ciphers</contextRoot>
+                            <contextRoot>/cryptography-suite</contextRoot>
                         </webModule>
                     </modules>
                     <outputFileNameMapping>@{artifactId}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
