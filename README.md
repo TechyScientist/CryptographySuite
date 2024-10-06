@@ -5,6 +5,7 @@ A suite of cryptography algorithms deployed as an enterprise web app
 The algorithms supported by this suite are listed below. Algorithms listed as **Support Completed** are contained in
 the app package, those listed as **Support In Progress** are in development, and those listed as **Support Planned** 
 are currently not included in the app package, but are planned to be included in future builds.
+<div style="position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 
 |           Algorithm           |        Encoding or Cipher Type         | Support |
 |:-----------------------------:|:--------------------------------------:|:-------:|
@@ -18,6 +19,7 @@ are currently not included in the app package, but are planned to be included in
 |            Enigma             |   Transposition/Substitution Cipher    | Planned |
 | Columnar Transposition Cipher |          Transposition Cipher          | Planned |
 | Shuffle Transposition Cipher  |          Transposition Cipher          | Planned |
+</div>
 
 ## License
 This suite is provided under the GNU Public License, Version 3, as-is, with **_absolutely no warranty_**.
