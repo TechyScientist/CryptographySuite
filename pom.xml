@@ -79,6 +79,10 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <configuration>
                     <skip>true</skip>
+                    <hostname>${env.REMOTE_SERVER_IP}</hostname>
+                    <port>9990</port>
+                    <username>${env.REMOTE_SERVER_USERNAME}</username>
+                    <password>${env.REMOTE_SERVER_PASSWORD}</password>
                 </configuration>
             </plugin>
         </plugins>
