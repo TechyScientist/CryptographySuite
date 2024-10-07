@@ -1,3 +1,4 @@
+<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.MorseString" %>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@
         }
 
         div#body {
-            margin: 30px;
+            padding: 30px;
         }
 
         h2 {
@@ -70,20 +71,11 @@
             border-radius: 16px;
         }
 
-        p#error {
-            background-color: darkred;
-            color: white;
-            text-align: center;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
         p#success {
             background-color: darkgreen;
             color: white;
+            border-radius: 16px;
             text-align: center;
-            width: 100%;
             padding: 10px;
             margin-bottom: 10px;
         }
@@ -98,7 +90,7 @@
     <h2>About the Morse Encoding</h2>
 
     <h2>Encode or Decode a Message</h2>
-    <form action="" method="post">
+    <form action="MorseServlet" method="post">
         <label for="message" style="vertical-align: top;">Message:</label>
         <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
         <label for="encode-decode">Encode or Decode?</label>
@@ -108,6 +100,12 @@
         </select><br/><br/>
         <input type="submit" name="morse-submit" id="morse-submit" value="Encode/Decode"/>
     </form>
+
+    <% if(request.getSession() != null && request.getSession().getAttribute("morse") != null) {
+            MorseString morseString = (MorseString) request.getSession().getAttribute("morse"); %>
+            <p id="success">The <strong><%= morseString.method %>d</strong> message is:<br/><strong><%= morseString.string %></strong></p>
+    <%      request.getSession().invalidate();
+        } %>
 </div>
 
 <hr/>

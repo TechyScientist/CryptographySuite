@@ -22,7 +22,7 @@
         }
 
         div#body {
-            margin: 30px;
+            padding: 30px;
         }
 
         h2 {
