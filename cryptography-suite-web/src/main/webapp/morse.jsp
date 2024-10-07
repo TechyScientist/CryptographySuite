@@ -93,8 +93,8 @@
 
     <h2>Encode or Decode a Message</h2>
     <form action="" method="post">
-        <label for="message">Message:</label>
-        <textarea name="message" id="message" placeholder="Message" required></textarea><br/><br/>
+        <label for="message" style="vertical-align: top;">Message:</label>
+        <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
         <label for="encode-decode">Encode or Decode?</label>
         <select name="encode-decode" id="encode-decode" required>
             <option value="encode">Encode</option>
