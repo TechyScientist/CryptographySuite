@@ -35,7 +35,9 @@
         }
 
         a {
+            display: block;
             color: black;
+            margin-bottom: 10px;
         }
 
         form {
