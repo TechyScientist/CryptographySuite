@@ -21,8 +21,8 @@ public class MorseStateless implements MorseStatelessLocal {
     public String encode(String msg) {
         if(msg == null || msg.isEmpty()) return "";
         StringBuilder encoded = new StringBuilder();
-
-        for(char c : msg.toUpperCase().toCharArray()) {
+        msg = msg.toUpperCase();
+        for(char c : msg.toCharArray()) {
             encoded.append(encodeChar(c)).append("/");
         }
 
