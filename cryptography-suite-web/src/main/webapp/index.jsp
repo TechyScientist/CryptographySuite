@@ -70,6 +70,7 @@
     <p>The suite currently has support for the following algorithms:</p>
     <ul>
         <li><a href="morse.jsp">Morse Encoding</a></li>
+        <li><a href="ohaver.jsp">Ohaver Encoding</a></li>
     </ul>
 </div>
 
