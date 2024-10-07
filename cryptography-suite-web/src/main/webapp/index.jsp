@@ -34,8 +34,17 @@
             margin-bottom: 10px;
         }
 
+        p {
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+
         a {
             color: black;
+        }
+
+        ul {
+            margin-left: 60px;
         }
 
         div#header {
