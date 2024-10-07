@@ -34,6 +34,10 @@
             margin-bottom: 10px;
         }
 
+        a {
+            color: black;
+        }
+
         div#header {
             background: var(--color-primary);
             padding: 20px;

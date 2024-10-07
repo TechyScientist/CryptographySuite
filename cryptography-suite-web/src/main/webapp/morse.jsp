@@ -34,6 +34,10 @@
             margin-bottom: 10px;
         }
 
+        a {
+            color: black;
+        }
+
         form {
             margin-left: 30px;
             margin-bottom: 25px;
@@ -88,7 +92,7 @@
     <h1>Cryptography Suite Web App</h1>
 </div>
 <div id="body">
-
+    <a href="index.jsp">Return to Home</a>
     <h2>About the Morse Encoding</h2>
 
     <h2>Encode or Decode a Message</h2>
