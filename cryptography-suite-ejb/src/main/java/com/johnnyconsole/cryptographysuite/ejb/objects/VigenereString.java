@@ -8,6 +8,7 @@ public class VigenereString implements Serializable {
 
     public VigenereString(String method, String keyword, String string) {
         this.method = method;
+        this.keyword = keyword;
         this.string = string;
     }
 
