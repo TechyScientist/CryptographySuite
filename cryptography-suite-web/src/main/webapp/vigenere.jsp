@@ -1,4 +1,5 @@
 <%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.MorseString" %>
+<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.VigenereString" %>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -90,24 +91,23 @@
     <h2>About the Vigen&egrave;re Cipher</h2>
 
     <h2>Encode or Decode a Message</h2>
-    <form action="" method="post">
+    <form action="VigenereServlet" method="post">
         <label for="keyword">Keyword:</label>
         <input type="text" name="keyword" id="keyword" placeholder="Keyword" required/><br/><br/>
         <label for="message" style="vertical-align: top;">Message:</label>
         <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
-        <label for="encode-decode">Encode or Decode?</label>
+        <label for="encode-decode">Encipher or Decipher?</label>
         <select name="encode-decode" id="encode-decode" required>
-            <option value="encode">Encode</option>
-            <option value="decode">Decode</option>
+            <option value="encipher">Encipher</option>
+            <option value="decipher">Decipher</option>
         </select><br/><br/>
-        <label for="return-table">Return Vigen&egrave;re Table?</label>
-        <select name="return-table" id="return-table" required>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select><br/><br/>
-        <input type="submit" name="vigenere-submit" id="vigenere-submit" value="Encode/Decode"/>
+        <input type="submit" name="vigenere-submit" id="vigenere-submit" value="Encipher/Decipher"/>
     </form>
-
+    <% if(request.getSession() != null && request.getSession().getAttribute("vigenere") != null) {
+        VigenereString vigenereString = (VigenereString) request.getSession().getAttribute("vigenere"); %>
+    <p id="success">The <strong><%= vigenereString.method %>ed</strong> message is:<br/><strong><%= vigenereString.string %></strong></p>
+    <%      request.getSession().invalidate();
+    } %>
 </div>
 
 <hr/>

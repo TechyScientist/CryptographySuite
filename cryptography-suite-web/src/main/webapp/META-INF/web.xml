@@ -4,4 +4,8 @@
         <servlet-name>MorseServlet</servlet-name>
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.encoding.MorseServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VigenereServlet</servlet-name>
+        <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.substitution.VigenereServlet</servlet-class>
+    </servlet>
 </web-app>
