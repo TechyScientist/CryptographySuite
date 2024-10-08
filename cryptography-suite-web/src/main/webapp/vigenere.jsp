@@ -1,4 +1,3 @@
-<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.MorseString" %>
 <%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.VigenereString" %>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -51,7 +50,7 @@
             margin-right: 10px;
         }
 
-        input, select {
+        input, select, textarea {
             padding: 5px
         }
 

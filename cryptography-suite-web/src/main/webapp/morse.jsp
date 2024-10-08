@@ -50,7 +50,7 @@
             margin-right: 10px;
         }
 
-        input, select {
+        input, select, textarea {
             padding: 5px
         }
 
