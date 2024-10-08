@@ -34,7 +34,7 @@ public class VigenereServlet extends HttpServlet {
             }
 
             HttpSession session = request.getSession();
-            session.setAttribute("vigenere", new VigenereString(encodeDecode, message));
+            session.setAttribute("vigenere", new VigenereString(encodeDecode, keyword, message));
             response.sendRedirect("vigenere.jsp");
         }
         else {
