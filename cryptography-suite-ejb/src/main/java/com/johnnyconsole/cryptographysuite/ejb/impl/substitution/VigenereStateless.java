@@ -49,12 +49,13 @@ public class VigenereStateless implements VigenereStatelessLocal {
         for(int i = 0; i < table[key - 'A'].length; i++) {
             if(table[key - 'A'][i] == c) return table[0][i];
         }
-        return table[c - 'A'][key - 'A'];
+        return '\0';
     }
 
     private String blowUpKey(String msg, String key) {
+        int l = key.length();
         for (int i = key.length(); i < msg.length() ; i++) {
-            key += key.charAt(i % key.length());
+            key += key.charAt(i % l);
         }
         return key;
     }
