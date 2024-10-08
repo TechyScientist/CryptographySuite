@@ -106,7 +106,10 @@
     </form>
     <% if(request.getSession() != null && request.getSession().getAttribute("vigenere") != null) {
         VigenereString vigenereString = (VigenereString) request.getSession().getAttribute("vigenere"); %>
-    <p id="success">The <strong><%= vigenereString.method %>ed</strong> message is:<br/><strong><%= vigenereString.string %></strong><br/>Using keyed alphabet: <strong><%= vigenereString.alphabet %></strong></p>
+    <p id="success">The <strong><%= vigenereString.method %>ed</strong> message is:<br/><strong><%= vigenereString.string %></strong>
+        <% if(vigenereString.method.equals("encipher")) { %>
+            <br/>Using keyword: <strong><%= vigenereString.keyword %></strong><br/>Using keyed alphabet: <strong><%= vigenereString.alphabet %></strong>
+        <% } %></p>
     <%      request.getSession().invalidate();
     } %>
 </div>
