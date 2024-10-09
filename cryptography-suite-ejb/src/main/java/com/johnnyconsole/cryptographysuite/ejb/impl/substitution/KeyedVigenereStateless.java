@@ -68,9 +68,18 @@ public class KeyedVigenereStateless implements KeyedVigenereStatelessLocal {
 
     private String blowUpKey(String msg, String key) {
         int l = key.length();
-        for (int i = key.length(); i < msg.length() ; i++) {
-            key += key.charAt(i % l);
+        String stream = "";
+        for (int i = 0, k = 0; i < msg.length(); i++) {
+            if(inAlphabet(msg.charAt(i))) stream += key.charAt(k++ % l);
+            else stream += " ";
         }
-        return key;
+        return stream;
+    }
+
+    private boolean inAlphabet(char c) {
+        for (int i = 0; i < table[0].length; i++) {
+            if(table[0][i] == c) return true;
+        }
+        return false;
     }
 }

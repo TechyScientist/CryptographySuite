@@ -54,9 +54,11 @@ public class VigenereStateless implements VigenereStatelessLocal {
 
     private String blowUpKey(String msg, String key) {
         int l = key.length();
-        for (int i = key.length(); i < msg.length() ; i++) {
-            key += key.charAt(i % l);
+        String stream = "";
+        for (int i = 0, k = 0; i < msg.length(); i++) {
+            if(Character.isLetter(msg.charAt(i))) stream += key.charAt(k++ % l);
+            else stream += " ";
         }
-        return key;
+        return stream;
     }
 }
