@@ -110,8 +110,10 @@
         VigenereString vigenereString = (VigenereString) request.getSession().getAttribute("vigenere"); %>
     <p id="success">The <strong><%= vigenereString.method %>ed</strong> message is:<br/><strong><%= vigenereString.string %></strong>
         <% if(vigenereString.method.equals("encipher")) { %>
-            <br/>Using keyword: <strong><%= vigenereString.keyword %></strong><br/>Using keyed alphabet: <strong><%= vigenereString.alphabet %></strong>
-        <% } %></p>
+            <br/>Using keyword: <strong><%= vigenereString.keyword %></strong><br/>Using alphabet: <strong><%= vigenereString.alphabet %></strong><% if(vigenereString.alphabetkeyword != null) { %>
+                <br/>Using alphabet keyword: <strong><%= vigenereString.alphabetkeyword %></strong>
+        <%
+        } }%></p>
     <%      request.getSession().invalidate();
     } %>
 </div>

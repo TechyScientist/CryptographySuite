@@ -34,7 +34,7 @@ public class KeyedVigenereServlet extends HttpServlet {
             }
 
             HttpSession session = request.getSession();
-            session.setAttribute("vigenere", new VigenereString(alphabet, keyword, encodeDecode, message));
+            session.setAttribute("vigenere", new VigenereString(alphabet, alphabetkey, keyword, encodeDecode, message));
             response.sendRedirect("keyed-vigenere.jsp");
         }
         else {
