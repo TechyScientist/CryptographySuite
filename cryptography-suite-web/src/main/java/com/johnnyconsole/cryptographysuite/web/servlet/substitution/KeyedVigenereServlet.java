@@ -21,15 +21,16 @@ public class KeyedVigenereServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if(request.getParameter("vigenere-submit") != null) {
             String alphabet = request.getParameter("alphabet").toUpperCase(),
-                    keyword = request.getParameter("keyword").toUpperCase(),
+                    alphabetkey = request.getParameter("alphabetkeyword").toUpperCase(),
+                    keyword = request.getParameter("cipherkeyword").toUpperCase(),
                     message = request.getParameter("message").toUpperCase(),
                     encodeDecode = request.getParameter("encode-decode");
 
             if(encodeDecode.equals("encipher")) {
-                message = stateless.encipher(alphabet, message, keyword);
+                message = stateless.encipher(alphabet, alphabetkey, message, keyword);
             }
             else {
-                message = stateless.decipher(alphabet, message, keyword);
+                message = stateless.decipher(alphabet, alphabetkey, message, keyword);
             }
 
             HttpSession session = request.getSession();

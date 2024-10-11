@@ -9,8 +9,20 @@ public class KeyedVigenereStateless implements KeyedVigenereStatelessLocal {
 
     public char[][] table = new char[26][26];
 
-    private void generateTable(String alphabet) {
-        char[] letters = alphabet.toUpperCase().toCharArray();
+    private void generateTable(String alphabet, String alphabetkey) {
+        String a = "";
+        for (int i = 0; i < alphabetkey.length(); i++) {
+            if(!a.contains(alphabetkey.charAt(i) + "")) {
+                a += alphabetkey.charAt(i);
+            }
+        }
+
+        for(int i = 0; i < alphabet.length(); i++) {
+            if(!a.contains(alphabet.charAt(i) + "")) {
+                a += alphabet.charAt(i);
+            }
+        }
+        char[] letters = a.toUpperCase().toCharArray();
         System.arraycopy(letters, 0, table[0], 0, table[0].length);
         for(int i = 1; i < table.length; i++) {
             System.arraycopy(table[i - 1], 1, table[i], 0, table[i].length - 1);
@@ -18,8 +30,8 @@ public class KeyedVigenereStateless implements KeyedVigenereStatelessLocal {
         }
     }
 
-    public String encipher(String alphabet, String msg, String key) {
-        generateTable(alphabet);
+    public String encipher(String alphabet, String alphabetkey, String msg, String key) {
+        generateTable(alphabet, alphabetkey);
         key = blowUpKey(msg, key.toUpperCase());
         StringBuilder ciphertext = new StringBuilder();
         for(int i = 0; i < msg.length(); i++) {
@@ -28,8 +40,8 @@ public class KeyedVigenereStateless implements KeyedVigenereStatelessLocal {
         return ciphertext.toString();
     }
 
-    public String decipher(String alphabet, String msg, String key) {
-        generateTable(alphabet);
+    public String decipher(String alphabet, String alphabetkey, String msg, String key) {
+        generateTable(alphabet, alphabetkey);
         key = blowUpKey(msg, key.toUpperCase());
         StringBuilder plaintext = new StringBuilder();
         for(int i = 0; i < msg.length(); i++) {
