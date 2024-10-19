@@ -90,7 +90,7 @@
     <h2>About the Ohaver Encoding</h2>
 
     <h2>Encode or Decode a Message</h2>
-    <form action="" method="post">
+    <form action="OhaverServlet" method="post">
         <label for="message" style="vertical-align: top;">Message:</label>
         <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
         <label for="encode-decode">Encode or Decode?</label>
@@ -101,8 +101,8 @@
         <input type="submit" name="ohaver-submit" id="ohaver-submit" value="Encode/Decode"/>
     </form>
 
-    <% if(request.getSession() != null && request.getSession().getAttribute("morse") != null) {
-            MorseString morseString = (MorseString) request.getSession().getAttribute("morse"); %>
+    <% if(request.getSession() != null && request.getSession().getAttribute("ohaver") != null) {
+            MorseString morseString = (MorseString) request.getSession().getAttribute("ohaver"); %>
             <p id="success">The <strong><%= morseString.method %>d</strong> message is:<br/><strong><%= morseString.string %></strong></p>
     <%      request.getSession().invalidate();
         } %>
