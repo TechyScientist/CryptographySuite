@@ -28,6 +28,21 @@ public class OhaverStateless implements OhaverStatelessLocal {
 
     @Override
     public String encode(String message) {
+        StringBuilder numberString = new StringBuilder(),
+                text = new StringBuilder(),
+                result = new StringBuilder();
+        for (int i = 0; i < message.length(); i++) {
+            String ch = morse.get(message.charAt(i));
+            text.append(ch);
+            numberString.append(ch.length());
+        }
+        numberString.reverse();
+
+        for (int i = 0; i < numberString.length(); i++) {
+            int l = numberString.charAt(i) - '0';
+            result.append(plain.get(text.substring(0, l)));
+
+        }
         return null;
     }
 
