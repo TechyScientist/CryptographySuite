@@ -8,4 +8,8 @@
         <servlet-name>VigenereServlet</servlet-name>
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.substitution.VigenereServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>KeyedVigenereServlet</servlet-name>
+        <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.substitution.KeyedVigenereServlet</servlet-class>
+    </servlet>
 </web-app>
