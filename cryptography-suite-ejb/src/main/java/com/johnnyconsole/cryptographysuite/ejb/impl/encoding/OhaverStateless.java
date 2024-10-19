@@ -41,14 +41,15 @@ public class OhaverStateless implements OhaverStatelessLocal {
         for (int i = 0; i < numberString.length(); i++) {
             int l = numberString.charAt(i) - '0';
             result.append(plain.get(text.substring(0, l)));
-
+            text.delete(0, l);
         }
-        return null;
+        return result.toString();
     }
 
+    // The Ohaver encoding is symmetric
     @Override
     public String decode(String message) {
-        return null;
+        return encode(message);
     }
 
 }
