@@ -93,17 +93,17 @@
     <form action="AtbashServlet" method="post">
         <label for="message" style="vertical-align: top;">Message:</label>
         <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
-        <label for="encode-decode">Encode or Decode?</label>
+        <label for="encode-decode">Encipher or Decipher?</label>
         <select name="encode-decode" id="encode-decode" required>
-            <option value="encode">Encode</option>
-            <option value="decode">Decode</option>
+            <option value="encode">Encipher</option>
+            <option value="decode">Decipher</option>
         </select><br/><br/>
-        <input type="submit" name="atbash-submit" id="atbash-submit" value="Encode/Decode"/>
+        <input type="submit" name="atbash-submit" id="atbash-submit" value="Encipher/Decipher"/>
     </form>
 
     <% if(request.getSession() != null && request.getSession().getAttribute("atbash") != null) {
             MorseString morseString = (MorseString) request.getSession().getAttribute("atbash"); %>
-            <p id="success">The <strong><%= morseString.method %>d</strong> message is:<br/><strong><%= morseString.string %></strong></p>
+            <p id="success">The <strong><%= morseString.method %>ed</strong> message is:<br/><strong><%= morseString.string %></strong></p>
     <%      request.getSession().invalidate();
         } %>
 </div>

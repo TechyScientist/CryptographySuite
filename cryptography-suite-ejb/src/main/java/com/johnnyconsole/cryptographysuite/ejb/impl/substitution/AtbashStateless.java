@@ -8,7 +8,7 @@ import javax.ejb.Stateless;
 public class AtbashStateless implements AtbashStatelessLocal {
 
     @Override
-    public String encodeDecode(String message) {
+    public String encipherDecipher(String message) {
         StringBuilder result = new StringBuilder();
         for(char c: message.toCharArray()) {
             if(!Character.isLetter(c)) result.append(c);

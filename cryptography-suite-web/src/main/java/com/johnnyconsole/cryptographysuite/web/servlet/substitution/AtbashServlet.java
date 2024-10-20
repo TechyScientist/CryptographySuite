@@ -23,7 +23,7 @@ public class AtbashServlet extends HttpServlet {
             String message = request.getParameter("message").toUpperCase(),
                     encodeDecode = request.getParameter("encode-decode");
 
-            message = stateless.encodeDecode(message);
+            message = stateless.encipherDecipher(message);
 
             HttpSession session = request.getSession();
             session.setAttribute("atbash", new MorseString(encodeDecode, message));

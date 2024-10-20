@@ -5,6 +5,6 @@ import javax.ejb.Local;
 @Local
 public interface AtbashStatelessLocal {
 
-    String encodeDecode(String message);
+    String encipherDecipher(String message);
 
 }
