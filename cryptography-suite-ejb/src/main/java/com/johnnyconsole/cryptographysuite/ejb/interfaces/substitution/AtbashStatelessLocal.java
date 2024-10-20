@@ -1,4 +1,4 @@
-package com.johnnyconsole.cryptographysuite.ejb.interfaces.encoding;
+package com.johnnyconsole.cryptographysuite.ejb.interfaces.substitution;
 
 import javax.ejb.Local;
 

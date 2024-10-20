@@ -1,6 +1,6 @@
-package com.johnnyconsole.cryptographysuite.ejb.impl.encoding;
+package com.johnnyconsole.cryptographysuite.ejb.impl.substitution;
 
-import com.johnnyconsole.cryptographysuite.ejb.interfaces.encoding.AtbashStatelessLocal;
+import com.johnnyconsole.cryptographysuite.ejb.interfaces.substitution.AtbashStatelessLocal;
 
 import javax.ejb.Stateless;
 
