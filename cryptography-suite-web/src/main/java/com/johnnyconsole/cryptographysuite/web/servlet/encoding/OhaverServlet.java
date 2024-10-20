@@ -23,12 +23,7 @@ public class OhaverServlet extends HttpServlet {
             String message = request.getParameter("message").toUpperCase().replace(" ", "_"),
                     encodeDecode = request.getParameter("encode-decode");
 
-            if(encodeDecode.equals("encode")) {
-                message = stateless.encode(message);
-            }
-            else {
-                message = stateless.decode(message);
-            }
+            message = stateless.encodeDecode(message);
 
             HttpSession session = request.getSession();
             session.setAttribute("ohaver", new MorseString(encodeDecode, message));

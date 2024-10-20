@@ -27,7 +27,7 @@ public class OhaverStateless implements OhaverStatelessLocal {
     }};
 
     @Override
-    public String encode(String message) {
+    public String encodeDecode(String message) {
         StringBuilder numberString = new StringBuilder(),
                 text = new StringBuilder(),
                 result = new StringBuilder();
@@ -45,11 +45,4 @@ public class OhaverStateless implements OhaverStatelessLocal {
         }
         return result.toString();
     }
-
-    // The Ohaver encoding is symmetric
-    @Override
-    public String decode(String message) {
-        return encode(message);
-    }
-
 }
