@@ -40,11 +40,17 @@
         }
 
         a {
+            display: block;
             color: black;
+            font-size: 18px;
         }
 
         ul {
             margin-left: 60px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
         }
 
         div#header {
