@@ -77,6 +77,7 @@
     <ul>
         <li><a href="morse.jsp">Morse Encoding</a></li>
         <li><a href="ohaver.jsp">Ohaver Encoding</a></li>
+        <li><a href="simplesub.jsp">Simple Substitution Cipher</a></li>
         <li><a href="atbash.jsp">Atbash Cipher</a></li>
         <li><a href="vigenere.jsp">Vigen&egrave;re Cipher</a></li>
         <li><a href="keyed-vigenere.jsp">Keyed Vigem&egrave;re Cipher</a></li>
