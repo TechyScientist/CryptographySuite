@@ -9,6 +9,10 @@
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.encoding.OhaverServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SimpleSubstitutionServlet</servlet-name>
+        <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.substitution.SimpleSubstitutionServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AtbashServlet</servlet-name>
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.substitution.AtbashServlet</servlet-class>
     </servlet>
