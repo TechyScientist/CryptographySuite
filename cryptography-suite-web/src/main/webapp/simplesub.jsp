@@ -1,4 +1,4 @@
-<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.VigenereString" %>
+<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.EncodedString" %>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -115,7 +115,7 @@
                 <% } %>
             </tr>
             <tr>
-                <% for(char c = 'L'; c <= 'U'; c++) { %>
+                <% for(char c = 'K'; c <= 'T'; c++) { %>
                 <td style="text-align: center;"><%= c %> ->&nbsp;
                     <select name="alphabet<%= c %>" id="alphabet<%= c %>">
                         <% for(char ch = 'A'; ch <= 'Z'; ch++) { %>
@@ -126,7 +126,7 @@
                 <% } %>
             </tr>
             <tr>
-            <% for(char c = 'V'; c <= 'Z'; c++) { %>
+            <% for(char c = 'U'; c <= 'Z'; c++) { %>
             <td style="text-align: center;"><%= c %> ->&nbsp;
                 <select name="alphabet<%= c %>" id="alphabet<%= c %>">
                     <% for(char ch = 'A'; ch <= 'Z'; ch++) { %>
@@ -144,20 +144,25 @@
             <option value="encipher">Encipher</option>
             <option value="decipher">Decipher</option>
         </select><br/><br/>
-        <input type="submit" name="vigenere-submit" id="vigenere-submit" value="Encipher/Decipher"/>
+        <input type="submit" name="simplesub-submit" id="simplesub-submit" value="Encipher/Decipher"/>
     </form>
-    <% if(request.getSession() != null && request.getSession().getAttribute("vigenere") != null) {
-        VigenereString vigenereString = (VigenereString) request.getSession().getAttribute("vigenere"); %>
-    <p id="success">The <strong><%= vigenereString.method %>ed</strong> message is:<br/><strong><%= vigenereString.string %></strong>
-        <% if(vigenereString.method.equals("encipher")) { %>
-            <br/>Using keyword: <strong><%= vigenereString.keyword %></strong><br/>Using <strong>Standard Alphabet</strong>
-        <% } %>
-    </p>
+    <% if(request.getSession() != null && request.getSession().getAttribute("simplesub") != null) {
+        EncodedString encodedString = (EncodedString) request.getSession().getAttribute("simplesub"); %>
+    <p id="success">The <strong><%= encodedString.method %>ed</strong> message is:<br/><strong><%= encodedString.string %></strong><br/> with alphabet: <strong><%= request.getParameter("alphabet")%></strong></p>
     <%      request.getSession().invalidate();
     } %>
 </div>
 
 <hr/>
 
+
+<script>
+    for(let i = 0; i < 26; i++) {
+        document.getElementById("alphabet" + String.fromCharCode(i + 65)).onchange = (event) => {
+            const letter = event.target.value;
+            document.getElementById("alphabet" + letter).value = String.fromCharCode(i + 65);
+        }
+    }
+</script>
 </body>
 </html>
