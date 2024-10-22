@@ -1,7 +1,7 @@
 package com.johnnyconsole.cryptographysuite.web.servlet.substitution;
 
 import com.johnnyconsole.cryptographysuite.ejb.interfaces.substitution.AtbashStatelessLocal;
-import com.johnnyconsole.cryptographysuite.ejb.objects.MorseString;
+import com.johnnyconsole.cryptographysuite.ejb.objects.EncodedString;
 
 import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +26,7 @@ public class AtbashServlet extends HttpServlet {
             message = stateless.encipherDecipher(message);
 
             HttpSession session = request.getSession();
-            session.setAttribute("atbash", new MorseString(encodeDecode, message));
+            session.setAttribute("atbash", new EncodedString(encodeDecode, message));
             response.sendRedirect("atbash.jsp");
         }
         else {

@@ -1,4 +1,5 @@
-<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.MorseString" %>
+<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.EncodedString" %>
+<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.EncodedString" %>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -102,8 +103,8 @@
     </form>
 
     <% if(request.getSession() != null && request.getSession().getAttribute("ohaver") != null) {
-            MorseString morseString = (MorseString) request.getSession().getAttribute("ohaver"); %>
-            <p id="success">The <strong><%= morseString.method %>d</strong> message is:<br/><strong><%= morseString.string %></strong></p>
+            EncodedString encodedString = (EncodedString) request.getSession().getAttribute("ohaver"); %>
+            <p id="success">The <strong><%= encodedString.method %>d</strong> message is:<br/><strong><%= encodedString.string %></strong></p>
     <%      request.getSession().invalidate();
         } %>
 </div>

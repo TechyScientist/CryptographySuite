@@ -1,7 +1,7 @@
 package com.johnnyconsole.cryptographysuite.web.servlet.encoding;
 
 import com.johnnyconsole.cryptographysuite.ejb.interfaces.encoding.OhaverStatelessLocal;
-import com.johnnyconsole.cryptographysuite.ejb.objects.MorseString;
+import com.johnnyconsole.cryptographysuite.ejb.objects.EncodedString;
 
 import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +26,7 @@ public class OhaverServlet extends HttpServlet {
             message = stateless.encodeDecode(message);
 
             HttpSession session = request.getSession();
-            session.setAttribute("ohaver", new MorseString(encodeDecode, message));
+            session.setAttribute("ohaver", new EncodedString(encodeDecode, message));
             response.sendRedirect("ohaver.jsp");
         }
         else {

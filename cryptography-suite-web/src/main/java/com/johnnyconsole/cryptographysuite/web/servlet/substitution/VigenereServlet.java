@@ -1,8 +1,6 @@
 package com.johnnyconsole.cryptographysuite.web.servlet.substitution;
 
-import com.johnnyconsole.cryptographysuite.ejb.interfaces.encoding.MorseStatelessLocal;
 import com.johnnyconsole.cryptographysuite.ejb.interfaces.substitution.VigenereStatelessLocal;
-import com.johnnyconsole.cryptographysuite.ejb.objects.MorseString;
 import com.johnnyconsole.cryptographysuite.ejb.objects.VigenereString;
 
 import javax.ejb.EJB;

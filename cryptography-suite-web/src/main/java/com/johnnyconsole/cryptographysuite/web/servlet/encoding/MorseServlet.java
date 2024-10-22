@@ -1,7 +1,7 @@
 package com.johnnyconsole.cryptographysuite.web.servlet.encoding;
 
 import com.johnnyconsole.cryptographysuite.ejb.interfaces.encoding.MorseStatelessLocal;
-import com.johnnyconsole.cryptographysuite.ejb.objects.MorseString;
+import com.johnnyconsole.cryptographysuite.ejb.objects.EncodedString;
 
 import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +31,7 @@ public class MorseServlet extends HttpServlet {
             }
 
             HttpSession session = request.getSession();
-            session.setAttribute("morse", new MorseString(encodeDecode, message));
+            session.setAttribute("morse", new EncodedString(encodeDecode, message));
             response.sendRedirect("morse.jsp");
         }
         else {
