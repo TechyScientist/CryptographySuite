@@ -12,8 +12,9 @@ are currently not included in the app package, but are planned to be included in
 |          Ohaver Cipher          |              Encoding               | Completed | Non-alphabetic characters remain unchanged                                                     |
 |   Simple Substitution Cipher    | Mono-alphabetic Substitution Cipher | Completed | Non-alphabetic characters remain unchanged                                                     |
 |          Atbash Cipher          | Mono-alphabetic Substitution Cipher | Completed | Non-alphabetic characters remain unchanged                                                     |
-|       Simple Shift Cipher       | Mono-alphabetic Substitution Cipher |  Planned  |                                                                                                |
+|        Bit Shift Cipher         | Mono-alphabetic Substitution Cipher |  Planned  |                                                                                                |
 |          Caesar Cipher          | Mono-alphabetic Substitution Cipher |  Planned  |                                                                                                |
+|          Affine Cipher          | Mono-alphabetic Substitution Cipher |  Planned  |                                                                                                |
 | Standard Vigen&egrave;re Cipher | Poly-alphabetic Substitution Cipher | Completed | 1. Implementation uses Vigen&egrave;re table<br/>2. Non-alphabetic characters remain unchanged |
 |  Keyed Vigen&egrave;re Cipher   | Poly-alphabetic Substitution Cipher | Completed | 1. Implementation uses Vigen&egrave;re table<br/>2. Non-alphabetic characters remain unchanged |                                          |
 |             Enigma              | Poly-alphabetic Substitution Cipher |  Planned  |                                                                                                |
