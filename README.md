@@ -22,7 +22,9 @@ are currently not included in the app package, but are planned to be included in
 |  Shuffle Transposition Cipher   |        Transposition Cipher         |  Planned  |                                                                                                |
 |  Binary String Simplified DES   |            Block Cipher             |  Planned  |                                                                                                |
 |   ASCII String Simplified DES   |            Block Cipher             |  Planned  |                                                                                                |
-
+|  Binary String Simplified AES   |            Block Cipher             |  Planned  |                                                                                                |
+|   ASCII String Simplified AES   |            Block Cipher             |  Planned  |                                                                                                |
+       
 ## License
 This suite is provided under the GNU Public License, Version 3, as-is, with **_absolutely no warranty_**.
 See the License file for more information.
