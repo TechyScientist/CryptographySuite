@@ -38,6 +38,7 @@
 
         a {
             display: block;
+            width: fit-content;
             color: black;
             margin-bottom: 10px;
         }

@@ -41,6 +41,7 @@
 
         a {
             display: block;
+            width: fit-content;
             color: black;
             font-size: 18px;
         }
