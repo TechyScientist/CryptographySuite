@@ -34,7 +34,7 @@ public class BinarySimplifiedAESServlet extends HttpServlet {
                 }
 
                 if (encodeDecode.equals("encrypt")) {
-                    for(int i = 0; i < message.length(); i += 168) {
+                    for(int i = 0; i < message.length(); i += 16) {
                         result += stateless.encrypt(message.substring(i, i + 16), key);
                     }
                 }
