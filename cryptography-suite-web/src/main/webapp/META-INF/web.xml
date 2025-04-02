@@ -24,4 +24,8 @@
         <servlet-name>KeyedVigenereServlet</servlet-name>
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.substitution.KeyedVigenereServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BinarySimplifiedDESServlet</servlet-name>
+        <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.block.BinarySimplifiedDESServlet</servlet-class>
+    </servlet>
 </web-app>
