@@ -66,6 +66,14 @@
             background-color: var(--color-primary);
             border-radius: 16px;
         }
+
+        div#algorithms {
+            display: grid;
+            width: fit-content;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -75,14 +83,22 @@
 <div id="body">
     <h2>Algorithm Selection</h2>
     <p>The suite currently has support for the following algorithms:</p>
-    <ul>
-        <li><a href="morse.jsp">Morse Encoding</a></li>
-        <li><a href="ohaver.jsp">Ohaver Encoding</a></li>
-        <li><a href="simplesub.jsp">Simple Substitution Cipher</a></li>
-        <li><a href="atbash.jsp">Atbash Cipher</a></li>
-        <li><a href="vigenere.jsp">Vigen&egrave;re Cipher</a></li>
-        <li><a href="keyed-vigenere.jsp">Keyed Vigem&egrave;re Cipher</a></li>
-    </ul>
+    <div id="algorithms">
+        <ul>
+            <li><a href="morse.jsp">Morse Encoding</a></li>
+            <li><a href="ohaver.jsp">Ohaver Encoding</a></li>
+            <li><a href="simplesub.jsp">Simple Substitution Cipher</a></li>
+            <li><a href="atbash.jsp">Atbash Cipher</a></li>
+            <li><a href="vigenere.jsp">Vigen&egrave;re Cipher</a></li>
+            <li><a href="keyed-vigenere.jsp">Keyed Vigem&egrave;re Cipher</a></li>
+        </ul>
+        <ul>
+            <li><a href="binary-sdes.jsp">Binary String Simplified DES</a></li>
+            <li><a href="ascii-sdes.jsp">ASCII String Simplified DES</a></li>
+            <li><a href="binary-saes.jsp">Binary String Simplified AES</a></li>
+            <li><a href="ascii-saes.jsp">ASCII String Simplified AES</a></li>
+        </ul>
+    </div>
 </div>
 
 <hr/>
