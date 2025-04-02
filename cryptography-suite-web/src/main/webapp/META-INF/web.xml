@@ -28,4 +28,8 @@
         <servlet-name>BinarySimplifiedDESServlet</servlet-name>
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.block.BinarySimplifiedDESServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BinarySimplifiedAESServlet</servlet-name>
+        <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.block.BinarySimplifiedAESServlet</servlet-class>
+    </servlet>
 </web-app>
