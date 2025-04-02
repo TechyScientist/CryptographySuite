@@ -80,6 +80,15 @@
             padding: 10px;
             margin-bottom: 10px;
         }
+
+        p#error {
+            background-color: darkred;
+            color: white;
+            border-radius: 16px;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -91,18 +100,28 @@
     <h2>About Binary String Simplified DES</h2>
 
     <h2>Encode or Decode a Message</h2>
-    <form action="" method="post">
+    <form action="BinarySDESServlet" method="post">
         <label for="key">10-bit Key:</label>
         <input type="text" id="key" name="key" placeholder="Key" required><br/><br/>
         <label for="message" style="vertical-align: top;">Message:</label>
         <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
         <label for="encode-decode">Encipher or Decipher?</label>
         <select name="encode-decode" id="encode-decode" required>
-            <option value="encode">Encipher</option>
-            <option value="decode">Decipher</option>
+            <option value="encipher">Encipher</option>
+            <option value="decipher">Decipher</option>
         </select><br/><br/>
         <input type="submit" name="binary-sdes-submit" id="binary-sdes-submit" value="Encipher/Decipher"/>
     </form>
+
+    <%
+        if(request.getParameter("error") != null && request.getParameter("error").equals("key")) { %>
+    <p id="error">Invalid key <strong><%= request.getParameter("key") %></strong>: Key length must be 10 (is <%= request.getParameter("key").length()%>).</p>
+    <%  }
+        if(request.getSession() != null && request.getSession().getAttribute("sdes") != null) {
+        EncodedString encodedString = (EncodedString) request.getSession().getAttribute("sdes"); %>
+    <p id="success">The <strong><%= encodedString.method %>ed</strong> message is:<br/><strong><%= encodedString.string %></strong><br/>Using key: <strong><%= encodedString.key %></strong></p>
+    <%      request.getSession().invalidate();
+    } %>
 </div>
 
 <hr/>
