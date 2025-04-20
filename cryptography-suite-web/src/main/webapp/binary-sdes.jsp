@@ -128,7 +128,7 @@
     <%  }
         if(request.getSession() != null && request.getSession().getAttribute("sdes") != null) {
         EncodedString encodedString = (EncodedString) request.getSession().getAttribute("sdes"); %>
-    <p id="success">The <strong><%= encodedString.method %>ed</strong> message is: <strong><%= encodedString.string %></strong><br/>Using key: <strong><%= encodedString.key %></strong></p>
+    <p id="success">The <strong><%= encodedString.mode + " mode " + encodedString.method %>ed</strong> message is: <strong><%= encodedString.string %></strong><br/>Using key: <strong><%= encodedString.key %></strong><% if(encodedString.mode.equals("CBC")) {%><br/>and initialization vector: <strong><%= encodedString.iv %></strong><%}%></p>
     <%      request.getSession().invalidate();
     } %>
 </div>
