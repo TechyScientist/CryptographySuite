@@ -100,7 +100,11 @@
 
     <h2>Encode or Decode a Message</h2>
     <form action="RSAServlet" method="post">
-        <label for="key">Public Key:</label>
+        <label for="prime-p">Prime p:</label>
+        <input type="text" id="prime-p" name="prime-p" placeholder="Prime p" required/><br/><br/>
+        <label for="prime-q">Prime q:</label>
+        <input type="text" id="prime-q" name="prime-q" placeholder="Prime q" required/><br/><br/>
+        <label for="key">Encryption Key:</label>
         <input type="text" id="key" name="key" placeholder="Key" required/><br/><br/>
         <label for="message" style="vertical-align: top;">Message:</label>
         <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
