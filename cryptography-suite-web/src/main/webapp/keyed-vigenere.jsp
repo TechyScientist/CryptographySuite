@@ -92,8 +92,7 @@
 
     <h2>Encode or Decode a Message</h2>
     <form action="KeyedVigenereServlet" method="post">
-        <label for="alphabet">Alphabet:</label>
-        <input type="text" name="alphabet" id="alphabet" placeholder="Alphabet" style="width: 250px;" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ"/><br/><br/>
+        <input type="hidden" name="alphabet" id="alphabet" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
         <label for="alphabetkeyword">Alphabet Keyword:</label>
         <input type="text" name="alphabetkeyword" id="alphabetkeyword" placeholder="Alphabet Keyword"/><br/><br/>
         <label for="cipherkeyword">Cipher Keyword:</label>
