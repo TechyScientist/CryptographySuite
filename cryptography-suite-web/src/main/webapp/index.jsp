@@ -94,9 +94,7 @@
         </ul>
         <ul>
             <li><a href="binary-sdes.jsp">Binary String Simplified DES</a></li>
-            <li><a href="ascii-sdes.jsp">ASCII String Simplified DES</a></li>
             <li><a href="binary-saes.jsp">Binary String Simplified AES</a></li>
-            <li><a href="ascii-saes.jsp">ASCII String Simplified AES</a></li>
         </ul>
     </div>
 </div>
