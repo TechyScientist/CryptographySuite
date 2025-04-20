@@ -35,12 +35,12 @@ public class BinarySimplifiedDESServlet extends HttpServlet {
 
                 if (encodeDecode.equals("encipher")) {
                     for(int i = 0; i < message.length(); i += 8) {
-                        result += stateless.encrypt(message.substring(i, i + 8), key);
+                        result += stateless.ecb_encrypt(message.substring(i, i + 8), key);
                     }
                 }
                 else {
                     for (int i = 0; i < message.length(); i += 8) {
-                        result += stateless.decrypt(message.substring(i, i + 8), key);
+                        result += stateless.ecb_decrypt(message.substring(i, i + 8), key);
                     }
                 }
                 HttpSession session = request.getSession();

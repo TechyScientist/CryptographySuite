@@ -22,7 +22,7 @@ public class SimplifiedDESStateless implements SimplifiedDESStatelessLocal {
     };
 
     @Override
-    public String encrypt(String msg, String key) {
+    public String ecb_encrypt(String msg, String key) {
         String p10 = P10(key),
             firstShiftL = shift(p10.substring(0, 5), 1),
             firstShiftR = shift(p10.substring(5), 1),
@@ -36,7 +36,7 @@ public class SimplifiedDESStateless implements SimplifiedDESStatelessLocal {
     }
 
     @Override
-    public String decrypt(String msg, String key) {
+    public String ecb_decrypt(String msg, String key) {
         String p10 = P10(key),
                 firstShiftL = shift(p10.substring(0, 5), 1),
                 firstShiftR = shift(p10.substring(5), 1),
