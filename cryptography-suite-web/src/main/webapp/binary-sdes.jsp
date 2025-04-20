@@ -102,7 +102,16 @@
     <h2>Encode or Decode a Message</h2>
     <form action="BinarySDESServlet" method="post">
         <label for="key">10-bit Key:</label>
-        <input type="text" id="key" name="key" placeholder="Key" required><br/><br/>
+        <input type="text" id="key" name="key" placeholder="Key" required/><br/><br/>
+        <label for="mode">Cipher Mode:</label>
+        <select name="mode" id="mode" required>
+            <option value="ECB">Electronic Codebook (ECB)</option>
+            <option value="CBC">Cipher Block Chaining (CBC)</option>
+        </select><br/><br/>
+        <div id="cbc" style="display: none;">
+            <label for="iv">8-bit Initialization Vector:</label>
+            <input name="iv" id="iv" placeholder="Initialization Vector"/><br/><br/>
+        </div>
         <label for="message" style="vertical-align: top;">Message:</label>
         <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
         <label for="encode-decode">Encipher or Decipher?</label>
@@ -127,4 +136,17 @@
 <hr/>
 
 </body>
+
+<script>
+    document.getElementById("mode").onchange = (event) => {
+        if(document.getElementById("cbc").style.display === "none") {
+            document.getElementById("cbc").style.display = "block";
+            document.getElementById("iv").required = true;
+        }
+        else {
+            document.getElementById("cbc").style.display = "none";
+            document.getElementById("iv").required = false;
+        }
+    }
+</script>
 </html>
