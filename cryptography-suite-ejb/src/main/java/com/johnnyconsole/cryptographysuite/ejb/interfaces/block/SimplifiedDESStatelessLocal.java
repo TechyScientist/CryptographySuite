@@ -7,5 +7,7 @@ public interface SimplifiedDESStatelessLocal {
 
     String ecb_encrypt(String msg, String key);
     String ecb_decrypt(String msg, String key);
+    String cbc_encrypt(String msg, String iv, String key);
+    String cbc_decrypt(String msg, String iv, String key);
 
 }

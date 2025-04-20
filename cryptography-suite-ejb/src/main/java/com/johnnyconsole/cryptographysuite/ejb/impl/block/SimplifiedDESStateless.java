@@ -49,6 +49,16 @@ public class SimplifiedDESStateless implements SimplifiedDESStatelessLocal {
         return IPInv(pi1);
     }
 
+    @Override
+    public String cbc_encrypt(String msg, String iv, String key) {
+        return ecb_encrypt(XOR(msg, iv), key);
+    }
+
+    @Override
+    public String cbc_decrypt(String msg, String iv, String key) {
+        return XOR(ecb_decrypt(msg, key), iv);
+    }
+
     private static String IP(String text) {
         return String.valueOf(text.charAt(1)) +
                 text.charAt(5) +
