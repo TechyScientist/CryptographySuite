@@ -8,5 +8,6 @@ public interface RSAStatelessLocal {
     long[] generateKeypair(long p, long q, long e);
     String encrypt(String msg, long key);
     String decrypt(String msg, long key);
+    String error();
 
 }
