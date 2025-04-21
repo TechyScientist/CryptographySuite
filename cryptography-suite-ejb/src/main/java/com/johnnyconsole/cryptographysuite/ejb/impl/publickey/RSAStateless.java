@@ -10,18 +10,18 @@ public class RSAStateless implements RSAStatelessLocal {
 
     @Override
     public long[] generateKeypair(long p, long q, long e) {
-        if(!isPrime(p)) {
+        if(isNotPrime(p)) {
             error = "p-not-prime";
             return null;
         }
-        if(!isPrime(q)) {
+        if(isNotPrime(q)) {
             error = "q-not-prime";
             return null;
         }
 
         long n = p * q, t = (p - 1) * (q - 1);
         if (gcd(e, t) == 1) {
-            long[] solution = ModularSolver(e, 1, t);
+            long[] solution = ModularSolver(e, t);
             if(solution != null) return new long[] {n, e, Math.floorMod(solution[1], t)};
             error = "inverse-error";
             return null;
@@ -58,12 +58,12 @@ public class RSAStateless implements RSAStatelessLocal {
         }
     }
 
-    private long[] ModularSolver(long a, long b, long n) {
+    private long[] ModularSolver(long a, long n) {
         long[] res = ExtendedEuclidean(a, n);
-        long d = res[0], x = res[1], y = res[2];
-        if(d != 0 || b != 0) {
+        long d = res[0], x = res[1];
+        if(d != 0) {
             long[] answers = new long[(int)d];
-            long x0 = Math.floorMod(x * Math.floorDiv(b, d),  n);
+            long x0 = Math.floorMod(x,  n);
             for(int i = 0; i < d; i++) {
                 answers[i] = Math.floorMod(x0 + i * Math.floorDiv(n, d), n);
             }
@@ -72,11 +72,11 @@ public class RSAStateless implements RSAStatelessLocal {
         return null;
     }
 
-    private boolean isPrime(long l) {
+    private boolean isNotPrime(long l) {
         for(int i = 2; i < Math.sqrt(l); i++) {
-            if(l % i == 0) return false;
+            if(l % i == 0) return true;
         }
-        return true;
+        return false;
     }
 
 }
