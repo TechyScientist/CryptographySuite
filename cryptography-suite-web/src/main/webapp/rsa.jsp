@@ -147,6 +147,30 @@
         </div>
     </div><br/><br/>
 
+    <% if(request.getParameter("keygen-error") != null) {
+        String error = request.getParameter("keygen-error"); %>
+        <p id="error"><strong>Key Generation Error:</strong>&nbsp;
+        <% switch(error) {
+            case "p-not-prime": %>
+                Entered value p is not prime
+        <%      break;
+            case "q-not-prime": %>
+                Entered value q is not prime
+        <%      break;
+            case "inverse-error": %>
+                Generated decryption key value is invalid
+        <%      break;
+            case "e-incorrect": %>
+                Desired encryption key is not valid
+        <%      break;
+            } %>
+        </p>
+<%  } else if(request.getParameter("keygen") != null) {
+        HttpSession s = request.getSession();
+        long[] keypair = (long[]) s.getAttribute("rsa-keypair");
+        s.invalidate();  %>
+        <p id="success">Generated Public Keyset: <strong>(n = <%= keypair[0] %>, e = <%= keypair[1] %>)</strong><br/>Generated Private Key: <strong>d = <%= keypair[2] %></strong></p>
+<% } %>
 </div>
 
 <hr/>
