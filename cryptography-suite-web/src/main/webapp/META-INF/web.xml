@@ -5,10 +5,6 @@
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.encoding.MorseServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>OhaverServlet</servlet-name>
-        <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.encoding.OhaverServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>SimpleSubstitutionServlet</servlet-name>
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.substitution.SimpleSubstitutionServlet</servlet-class>
     </servlet>
