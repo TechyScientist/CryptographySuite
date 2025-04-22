@@ -22,7 +22,7 @@ public class RSAStateless implements RSAStatelessLocal {
         long n = p * q, t = (p - 1) * (q - 1);
         if (gcd(e, t) == 1) {
             long[] solution = ModularSolver(e, t);
-            if(solution != null) return new long[] {n, e, Math.floorMod(solution[1], t)};
+            if(solution != null) return new long[] {n, e, solution[0], t};
             error = "inverse-error";
             return null;
         }
