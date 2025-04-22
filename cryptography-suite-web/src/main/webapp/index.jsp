@@ -94,6 +94,7 @@
         <ul>
             <li><a href="binary-sdes.jsp">Binary String Simplified DES</a></li>
             <li><a href="binary-saes.jsp">Binary String Simplified AES</a></li>
+            <li><a href="knapsack.jsp">Knapsack Cryptosystem</a></li>
             <li><a href="rsa.jsp">RSA</a></li>
         </ul>
     </div>
