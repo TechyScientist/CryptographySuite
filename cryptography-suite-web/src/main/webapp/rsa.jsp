@@ -54,7 +54,7 @@
             padding: 5px
         }
 
-        input[type="text"], select {
+        input[type="number"], select {
             margin-right: 10px;
         }
 
@@ -110,11 +110,11 @@
             <h2>Generate RSA Keys</h2>
             <form action="RSAKeygenServlet" method="post">
                 <label for="prime-p">Prime p:</label>
-                <input type="text" id="prime-p" name="prime-p" placeholder="Prime p" required/><br/><br/>
+                <input type="number" id="prime-p" name="prime-p" placeholder="Prime p" required/><br/><br/>
                 <label for="prime-q">Prime q:</label>
-                <input type="text" id="prime-q" name="prime-q" placeholder="Prime q" required/><br/><br/>
+                <input type="number" id="prime-q" name="prime-q" placeholder="Prime q" required/><br/><br/>
                 <label for="desired-e">Desired Public Key:</label>
-                <input type="text" id="desired-e" name="desired-e" placeholder="Desired Public Key" required/><br/><br/>
+                <input type="number" id="desired-e" name="desired-e" placeholder="Desired Public Key" required/><br/><br/>
                 <input type="submit" name="rsa-keygen-submit" id="rsa-keygen-submit" value="Generate Keys"/>
             </form>
          </div>
@@ -123,9 +123,9 @@
             <h2>Encode a Message</h2>
             <form action="RSAServlet" method="post">
                 <label for="key">Recipient's Public Key:</label>
-                <input type="text" id="key" name="key" placeholder="Recipient's Public Key" required/><br/><br/>
+                <input type="number" id="key" name="key" placeholder="Recipient's Public Key" required/><br/><br/>
                 <label for="n">Modulus:</label>
-                <input type="text" id="n" name="n" placeholder="Modulus" required/><br/><br/>
+                <input type="number" id="n" name="n" placeholder="Modulus" required/><br/><br/>
                 <label for="message" style="vertical-align: top;">Message:</label>
                 <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
                 <input type="hidden" name="encode-decode" id="encode-decode" value="encipher"/>
@@ -136,9 +136,9 @@
             <h2>Decode a Message</h2>
             <form action="RSAServlet" method="post">
                 <label for="key">Private Key:</label>
-                <input type="text" id="key" name="key" placeholder="Private Key" required/><br/><br/>
+                <input type="number" id="key" name="key" placeholder="Private Key" required/><br/><br/>
                 <label for="n">Modulus:</label>
-                <input type="text" id="n" name="n" placeholder="Modulus" required/><br/><br/>
+                <input type="number" id="n" name="n" placeholder="Modulus" required/><br/><br/>
                 <label for="message" style="vertical-align: top;">Message:</label>
                 <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
                 <input type="hidden" name="encode-decode" id="encode-decode" value="decipher"/>
