@@ -54,8 +54,12 @@
             padding: 5px
         }
 
-        input[type="text"], select {
+        input[type="text"], input[type="number"], select {
             margin-right: 10px;
+        }
+
+        input.weight {
+            width: 5em;
         }
 
         div#header {
@@ -69,13 +73,6 @@
             height: 20px;
             background-color: var(--color-primary);
             border-radius: 16px;
-        }
-
-        div#wrapper {
-            display: grid;
-            width: fit-content;
-            grid-template-columns: repeat(3, auto);
-            gap: 20px;
         }
 
         p#success {
@@ -104,13 +101,18 @@
 <div id="body">
     <a href="index.jsp">Return to Home</a>
     <h2>About the Knapsack Cryptosystem</h2>
-
-    <div id="wrapper">
          <div>
             <h2>Generate Knapsack Keys</h2>
             <form action="KnapsackKeygenServlet" method="post">
-                <label for="superincreasing-knapsack"style="vertical-align: top;">Superincreasing Weight Set (one per line):</label><br/>
-                <textarea name="superincreasing-knapsack" id="superincreasing-knapsack" placeholder="Superincreasing Weights" required style="width: 250px; height: 125px; resize: none; vertical-align: top;"></textarea><br/><br/>
+                <label for="weight1">Superincreasing Weight Set:</label>
+                <input type="number" name="weight1" id="weight1" class="weight" required/>
+                <input type="number" name="weight2" id="weight2" class="weight" required/>
+                <input type="number" name="weight3" id="weight3" class="weight" required/>
+                <input type="number" name="weight4" id="weight4" class="weight" required/>
+                <input type="number" name="weight5" id="weight5" class="weight" required/>
+                <input type="number" name="weight6" id="weight6" class="weight" required/>
+                <input type="number" name="weight7" id="weight7" class="weight" required/>
+                <input type="number" name="weight8" id="weight8" class="weight" required/><br/><br/>
                 <label for="multiplier">Multiplier:</label>
                 <input type="text" id="multiplier" name="multiplier" placeholder="Multiplier" required/><br/><br/>
                 <label for="modulus">Modulus:</label>
@@ -122,27 +124,40 @@
         <div>
             <h2>Encode a Message</h2>
             <form action="KnapsackServlet" method="post">
-                <label for="key" style="vertical-align: top;">Recipient's Public Key:</label>
-                <textarea id="key" name="key" placeholder="Recipient's Public Key" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
+                <label for="weight1">Receiver's Public Key Set:</label>
+                <input type="number" name="weight1" id="weight1" class="weight" required/>
+                <input type="number" name="weight2" id="weight2" class="weight" required/>
+                <input type="number" name="weight3" id="weight3" class="weight" required/>
+                <input type="number" name="weight4" id="weight4" class="weight" required/>
+                <input type="number" name="weight5" id="weight5" class="weight" required/>
+                <input type="number" name="weight6" id="weight6" class="weight" required/>
+                <input type="number" name="weight7" id="weight7" class="weight" required/>
+                <input type="number" name="weight8" id="weight8" class="weight" required/><br/><br/>
                 <label for="message" style="vertical-align: top;">Message:</label>
                 <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
                 <input type="hidden" name="encode-decode" id="encode-decode" value="encipher"/>
-                <input type="submit" name="knasack-submit" id="knapsack-encode-submit" value="Encrypt Message"/>
+                <input type="submit" name="knasack-submit" id="knapsack-submit" value="Encrypt Message"/>
             </form>
         </div>
         <div>
             <h2>Decode a Message</h2>
             <form action="RSAServlet" method="post">
-                <label for="key" style="vertical-align: top;">Private Key:</label>
-                <textarea id="key" name="key" placeholder="Private Key" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
+                <label for="weight1">Private Key Set:</label>
+                <input type="number" name="weight1" id="weight1" class="weight" required/>
+                <input type="number" name="weight2" id="weight2" class="weight" required/>
+                <input type="number" name="weight3" id="weight3" class="weight" required/>
+                <input type="number" name="weight4" id="weight4" class="weight" required/>
+                <input type="number" name="weight5" id="weight5" class="weight" required/>
+                <input type="number" name="weight6" id="weight6" class="weight" required/>
+                <input type="number" name="weight7" id="weight7" class="weight" required/>
+                <input type="number" name="weight8" id="weight8" class="weight" required/><br/><br/>
                 <label for="message" style="vertical-align: top;">Message:</label>
                 <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
                 <input type="hidden" name="encode-decode" id="encode-decode" value="decipher"/>
-                <input type="submit" name="knapsack-submit" id="knapsack-encode-submit" value="Decrypt Message"/>
+                <input type="submit" name="knapsack-submit" id="knapsack-submit" value="Decrypt Message"/>
             </form>
         </div>
     </div><br/><br/>
-</div>
 
 <hr/>
 
