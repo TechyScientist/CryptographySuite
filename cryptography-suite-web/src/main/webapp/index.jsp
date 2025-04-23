@@ -89,7 +89,7 @@
             <li><a href="simplesub.jsp">Simple Substitution Cipher</a></li>
             <li><a href="atbash.jsp">Atbash Cipher</a></li>
             <li><a href="vigenere.jsp">Vigen&egrave;re Cipher</a></li>
-            <li><a href="keyed-vigenere.jsp">Keyed Vigem&egrave;re Cipher</a></li>
+            <li><a href="keyed-vigenere.jsp">Keyed Vigen&egrave;re Cipher</a></li>
         </ul>
         <ul>
             <li><a href="binary-sdes.jsp">Binary String Simplified DES</a></li>
