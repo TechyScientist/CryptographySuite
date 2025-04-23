@@ -54,7 +54,7 @@
             padding: 5px
         }
 
-        input[type="text"], input[type="number"], select {
+        input[type="number"], select {
             margin-right: 10px;
         }
 
@@ -114,9 +114,9 @@
                 <input type="number" name="weight7" id="weight7" class="weight" required/>
                 <input type="number" name="weight8" id="weight8" class="weight" required/><br/><br/>
                 <label for="multiplier">Multiplier:</label>
-                <input type="text" id="multiplier" name="multiplier" placeholder="Multiplier" required/><br/><br/>
+                <input type="number" id="multiplier" name="multiplier" placeholder="Multiplier" required/><br/><br/>
                 <label for="modulus">Modulus:</label>
-                <input type="text" id="modulus" name="modulus" placeholder="Modulus" required/><br/><br/>
+                <input type="number" id="modulus" name="modulus" placeholder="Modulus" required/><br/><br/>
                 <input type="submit" name="knapsack-keygen-submit" id="knapsack-keygen-submit" value="Generate Keys"/>
             </form>
          </div>
