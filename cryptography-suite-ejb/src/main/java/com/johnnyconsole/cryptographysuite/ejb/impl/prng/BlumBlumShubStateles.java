@@ -43,6 +43,7 @@ public class BlumBlumShubStateles implements BlumBlumShubStatelessLocal {
         return seq;
     }
 
+    @Override
     public String error() {
         return error;
     }
