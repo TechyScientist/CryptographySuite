@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <web-app>
     <servlet>
+        <servlet-name>BlumBlumShubServlet</servlet-name>
+        <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.prng.BlumBlumShubServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>MorseServlet</servlet-name>
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.encoding.MorseServlet</servlet-class>
     </servlet>
