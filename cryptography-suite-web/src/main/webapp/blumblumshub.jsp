@@ -81,6 +81,15 @@
             padding: 10px;
             margin-bottom: 10px;
         }
+
+        p#error {
+            background-color: darkred;
+            color: white;
+            border-radius: 16px;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -116,7 +125,10 @@
         <input type="submit" name="blum-blum-shub-submit" id="blum-blum-shub-submit" value="Generate Sequence" />
     </form>
 
-        <% if(request.getSession() != null && request.getSession().getAttribute("sequence") != null) {
+        <% if(request.getParameter("error") != null) { %>
+            <p id="error">Error: <%= request.getParameter("error") %></p>
+       <% }
+            else if(request.getSession() != null && request.getSession().getAttribute("sequence") != null) {
             NumberSequence sequence = (NumberSequence) request.getSession().getAttribute("sequence");
             if(sequence.base.equals("Binary")) {%>
                 <p id="success">The <strong><%= sequence.bitLength %>-bit <%= sequence.base.toLowerCase() %> </strong> sequence with p = <strong><%= sequence.p %></strong>, q = <strong><%= sequence.q %></strong>, seed = <strong><%= sequence.seed %></strong> is: <br/> <strong><%= Arrays.toString(sequence.strSequence)%></strong></p>
