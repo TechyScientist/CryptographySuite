@@ -1,3 +1,5 @@
+<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.NumberSequence" %>
+<%@ page import="java.util.Arrays" %>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -90,7 +92,7 @@
     <h2>About the Blum-Blum-Shub Algorithm</h2>
 
     <h2>Encode or Decode a Message</h2>
-    <form action="" method="post">
+    <form action="BlumBlumShubServlet" method="post">
        <label for="sequence">Binary or Decimal?</label>
         <select name="sequence" id="sequence">
             <option value="binary">Binary</option>
@@ -113,6 +115,16 @@
         <input type="number" name="length" id="length" required /><br/><br/>
         <input type="submit" name="blum-blum-shub-submit" id="blum-blum-shub-submit" value="Generate Sequence" />
     </form>
+
+        <% if(request.getSession() != null && request.getSession().getAttribute("sequence") != null) {
+            NumberSequence sequence = (NumberSequence) request.getSession().getAttribute("sequence");
+            if(sequence.base.equals("Binary")) {%>
+                <p id="success">The <strong><%= sequence.bitLength %>-bit <%= sequence.base.toLowerCase() %> </strong> sequence with p = <strong><%= sequence.p %></strong>, q = <strong><%= sequence.q %></strong>, seed = <strong><%= sequence.seed %></strong> is: <br/> <strong><%= Arrays.toString(sequence.strSequence)%></strong></p>
+    <%      } else { %>
+                <p id="success">The <strong><%= sequence.bitLength %>-bit <%= sequence.base.toLowerCase() %> </strong> sequence with p = <strong><%= sequence.p %></strong>, q = <strong><%= sequence.q %></strong>, seed = <strong><%= sequence.seed %></strong> is: <br/> <strong><%= Arrays.toString(sequence.intSequence)%></strong></p>
+    <%       }
+             request.getSession().invalidate();
+        } %>
 </div>
 
 <hr/>
