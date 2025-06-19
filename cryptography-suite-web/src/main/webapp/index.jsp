@@ -85,6 +85,7 @@
     <p>The suite currently has support for the following algorithms:</p>
     <div id="algorithms">
         <ul>
+            <li><a href="blumblumshub.jsp">Blum-Blum-Shub PRSG</a></li>
             <li><a href="morse.jsp">Morse Encoding</a></li>
             <li><a href="simplesub.jsp">Simple Substitution Cipher</a></li>
             <li><a href="atbash.jsp">Atbash Cipher</a></li>
