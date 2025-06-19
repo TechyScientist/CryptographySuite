@@ -94,7 +94,14 @@
        <label for="sequence">Binary or Decimal?</label>
         <select name="sequence" id="sequence">
             <option value="binary">Binary</option>
-            <option value="decimal">Decimal</option>
+            <option value="decimal" selected>Decimal</option>
+        </select><br/><br/>
+        <label for="bitlength">Bit Length:</label>
+        <select name="bitlength" id="bitlength">
+            <option value="1">BIT (1 bit)</option>
+            <option value="8" selected>BYTE (8 bits)</option>
+            <option value="16">WORD (16 bits)</option>
+            <option value="32">DWORD (32 bits)</option>
         </select><br/><br/>
         <label for="p">Prime value P:</label>
         <input type="number" name="p" id="p" required /><br/><br/>
