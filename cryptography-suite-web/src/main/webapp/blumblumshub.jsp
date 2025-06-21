@@ -115,13 +115,13 @@
             <option value="32">DWORD (32 bits)</option>
         </select><br/><br/>
         <label for="p">Prime value P:</label>
-        <input type="number" name="p" id="p" required /><br/><br/>
+        <input type="number" name="p" id="p" placeholder="Prime P" required /><br/><br/>
         <label for="q">Prime value Q:</label>
-        <input type="number" name="q" id="q" required /><br/><br/>
+        <input type="number" name="q" id="q" placeholder="Prime Q" required /><br/><br/>
         <label for="seed">Seed Value:</label>
-        <input type="number" name="seed" id="seed" required /><br/><br/>
+        <input type="number" name="seed" id="seed" placeholder="Seed" required /><br/><br/>
         <label for="length">Sequence Length:</label>
-        <input type="number" name="length" id="length" required /><br/><br/>
+        <input type="number" name="length" id="length" placeholder="Sequence Length" required /><br/><br/>
         <input type="submit" name="blum-blum-shub-submit" id="blum-blum-shub-submit" value="Generate Sequence" />
     </form>
 
