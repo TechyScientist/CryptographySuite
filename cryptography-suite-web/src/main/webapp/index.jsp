@@ -3,49 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Cryptography Suite Web App</title>
-
+    <link rel="stylesheet" href="assets/style/main.css" />
     <style>
-        :root {
-            --color-primary: #B3282D;
-            --color-background: #F0D4D5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: "Calibri Light", sans-serif;
-        }
-
-        body {
-            margin: 20px 200px;
-            background: var(--color-background)
-        }
-
-        div#body {
-            padding: 30px;
-        }
-
-        h2 {
-            margin-bottom: 10px;
-        }
-
-        h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            margin-bottom: 10px;
-            margin-left: 20px;
-        }
-
-        a {
-            display: block;
-            width: fit-content;
-            color: black;
-            font-size: 18px;
-        }
-
         ul {
             margin-left: 60px;
         }
@@ -54,20 +13,8 @@
             margin-bottom: 10px;
         }
 
-        div#header {
-            background: var(--color-primary);
-            padding: 20px;
-            color: white;
-            border-radius: 16px;
-        }
-
-        hr {
-            height: 20px;
-            background-color: var(--color-primary);
-            border-radius: 16px;
-        }
-
         div#algorithms {
+            margin-top: 10px;
             display: grid;
             width: fit-content;
             grid-template-columns: repeat(2, 1fr);
