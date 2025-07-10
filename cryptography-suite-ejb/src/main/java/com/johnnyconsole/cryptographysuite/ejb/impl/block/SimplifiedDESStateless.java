@@ -3,6 +3,7 @@ package com.johnnyconsole.cryptographysuite.ejb.impl.block;
 import com.johnnyconsole.cryptographysuite.ejb.interfaces.block.SimplifiedDESStatelessLocal;
 
 import javax.ejb.Stateless;
+import java.util.ArrayList;
 
 @Stateless
 public class SimplifiedDESStateless implements SimplifiedDESStatelessLocal {
@@ -56,12 +57,40 @@ public class SimplifiedDESStateless implements SimplifiedDESStatelessLocal {
 
     @Override
     public String cbc_encrypt(String plaintext, String iv, String key) {
-        return null;
+        generateKeys(key);
+        ArrayList<String> cipherBlocks = new ArrayList<>();
+        char[] blocks = plaintext.toCharArray();
+
+        for(int block = 0; block < blocks.length; block++) {
+            String binary = String.format("%8s", Integer.toBinaryString(blocks[block])).replace(' ', '0'),
+                    xor = XOR(binary, block == 0 ? iv : cipherBlocks.get(block - 1));
+            cipherBlocks.add(cbc_encryptChar(xor));
+        }
+
+        StringBuilder ciphertext = new StringBuilder();
+        for(String block: cipherBlocks) {
+            ciphertext.append(block).append(' ');
+        }
+        return ciphertext.deleteCharAt(ciphertext.length() - 1).toString();
     }
 
     @Override
     public String cbc_decrypt(String ciphertext, String iv, String key) {
-        return null;
+        generateKeys(key);
+        ArrayList<String> plainBlocks = new ArrayList<>();
+        String[] blocks = ciphertext.split(" ");
+
+        for(int block = 0; block < blocks.length; block++) {
+            String s = cbc_decryptChar(blocks[block]);
+            plainBlocks.add(XOR(s, block == 0 ? iv : blocks[block - 1]));
+        }
+
+        StringBuilder plaintext = new StringBuilder();
+        for(String block: plainBlocks) {
+            plaintext.append((char)(Integer.parseInt(block, 2)));
+        }
+
+        return plaintext.toString();
     }
 
     private void generateKeys(String key) {
@@ -88,6 +117,20 @@ public class SimplifiedDESStateless implements SimplifiedDESStatelessLocal {
                 pi2 = Pi(ip, K2),
                 pi1 = Pi(nibbleSwap(pi2), K1);
         return (char) (Integer.parseInt(permute(pi1, IPInv), 2));
+    }
+
+    private String cbc_encryptChar(String binary) {
+        String ip = permute(binary, IP),
+                pi1 = Pi(ip, K1),
+                pi2 = Pi(nibbleSwap(pi1), K2);
+        return permute(pi2, IPInv);
+    }
+
+    private String cbc_decryptChar(String s) {
+        String ip = permute(s, IP),
+                pi2 = Pi(ip, K2),
+                pi1 = Pi(nibbleSwap(pi2), K1);
+        return permute(pi1, IPInv);
     }
 
     private String permute(String bits, int[] ordering) {
