@@ -7,158 +7,138 @@ import javax.ejb.Stateless;
 @Stateless
 public class SimplifiedDESStateless implements SimplifiedDESStatelessLocal {
 
-    private static final String[][] S0 = {
+    private final String[][] S0 = {
             {"01", "00", "11", "10"},
             {"11", "10", "01", "00"},
             {"00", "10", "01", "11"},
             {"11", "01", "11", "10"}
     };
 
-    private static final String[][] S1 = {
+    private final String[][] S1 = {
             {"00", "01", "10", "11"},
             {"10", "00", "01", "11"},
             {"11", "00", "01", "00"},
             {"10", "01", "00", "11"}
     };
 
-    @Override
-    public String ecb_encrypt(String msg, String key) {
-        String p10 = P10(key),
-            firstShiftL = shift(p10.substring(0, 5), 1),
-            firstShiftR = shift(p10.substring(5), 1),
-            K1 = P8(firstShiftL + firstShiftR),
-            K2 = P8(shift(firstShiftL, 2) + shift(firstShiftR, 2)),
-            ip = IP(msg),
-            pi1 = PIt(ip, K1),
-            sw = SW(pi1),
-            pi2 = PIt(sw, K2);
-        return IPInv(pi2);
-    }
+    private final int[] P10 = {3, 5, 2, 7, 4, 10, 1, 9, 8, 6},
+            P8 = {6, 3, 7, 4, 8, 5, 10, 9},
+            P4 = {2, 4, 3, 1},
+            IP = {2, 6, 3, 1, 4, 8, 5, 7},
+            IPInv = {4, 1, 3, 5, 7, 2, 8, 6},
+            T = {4, 1, 2, 3, 2, 3, 4, 1};
+
+    private String K1, K2;
+
 
     @Override
-    public String ecb_decrypt(String msg, String key) {
-        String p10 = P10(key),
-                firstShiftL = shift(p10.substring(0, 5), 1),
-                firstShiftR = shift(p10.substring(5), 1),
-                K1 = P8(firstShiftL + firstShiftR),
-                K2 = P8(shift(firstShiftL, 2) + shift(firstShiftR, 2)),
-                ip = IP(msg),
-                pi2 = PIt(ip, K2),
-                sw = SW(pi2),
-                pi1 = PIt(sw, K1);
-        return IPInv(pi1);
-    }
-
-    @Override
-    public String cbc_encrypt(String msg, String iv, String key) {
-        return ecb_encrypt(XOR(msg, iv), key);
-    }
-
-    @Override
-    public String cbc_decrypt(String msg, String iv, String key) {
-        return XOR(ecb_decrypt(msg, key), iv);
-    }
-
-    private static String IP(String text) {
-        return String.valueOf(text.charAt(1)) +
-                text.charAt(5) +
-                text.charAt(2) +
-                text.charAt(0) +
-                text.charAt(3) +
-                text.charAt(7) +
-                text.charAt(4) +
-                text.charAt(6);
-    }
-
-    private static String PIt(String s, String key) {
-        return XOR(s.substring(0, 4), T(s.substring(4), key)) + s.substring(4);
-    }
-
-    private static String T(String A, String key) {
-        A = String.valueOf(A.charAt(3)) +
-                A.charAt(0) +
-                A.charAt(1) +
-                A.charAt(2) +
-                A.charAt(1) +
-                A.charAt(2) +
-                A.charAt(3) +
-                A.charAt(0);
-
-        String B = XOR(A, key);
-        String s0x = B.charAt(0) + "" + B.charAt(3), s0y = B.charAt(1) + "" + B.charAt(2),
-                s1x = B.charAt(4) + "" + B.charAt(7), s1y = B.charAt(5) + "" + B.charAt(6),
-                s0 = S0[Integer.parseInt(s0x, 2)][Integer.parseInt(s0y, 2)],
-                s1 = S1[Integer.parseInt(s1x, 2)][Integer.parseInt(s1y, 2)];
-        return P4(s0 + s1);
-    }
-
-    private static String SW(String text) {
-        return text.substring(4) + text.substring(0, 4);
-    }
-
-    private static String IPInv(String text) {
-        return String.valueOf(text.charAt(3)) +
-                text.charAt(0) +
-                text.charAt(2) +
-                text.charAt(4) +
-                text.charAt(6) +
-                text.charAt(1) +
-                text.charAt(7) +
-                text.charAt(5);
-    }
-
-    private static String shift(String value, int n) {
-        while(n-- != 0) {
-            value = value.substring(1) + value.charAt(0);
+    public String ecb_encrypt(String plaintext, String key) {
+        generateKeys(key);
+        StringBuilder ciphertext = new StringBuilder();
+        for (char plain : plaintext.toCharArray()) {
+            ciphertext.append(ecb_encryptChar(plain)).append(' ');
         }
-        return value;
+
+        return ciphertext.deleteCharAt(ciphertext.length() - 1).toString();
     }
 
-    private static String XOR(String a, String b) {
-        String r = "";
-        for(int i = 0; i < a.length(); i++) {
-            switch(a.charAt(i) + "" + b.charAt(i)) {
+    @Override
+    public String ecb_decrypt(String ciphertext, String key) {
+        generateKeys(key);
+        String[] chars = ciphertext.split(" ");
+        StringBuilder plaintext = new StringBuilder();
+        for (String binary : chars) {
+            plaintext.append(ecb_decryptChar(binary));
+        }
+
+        return plaintext.toString();
+    }
+
+    @Override
+    public String cbc_encrypt(String plaintext, String iv, String key) {
+        return null;
+    }
+
+    @Override
+    public String cbc_decrypt(String ciphertext, String iv, String key) {
+        return null;
+    }
+
+    private void generateKeys(String key) {
+        String p10 = permute(key, P10),
+                a = shift(p10.substring(0, 5), 1),
+                b = shift(p10.substring(5), 1);
+
+        K1 = permute(a + b, P8);
+        a = shift(a, 2);
+        b = shift(b, 2);
+        K2 = permute(a + b, P8);
+    }
+
+    private String ecb_encryptChar(char c) {
+        String binary = String.format("%8s", Integer.toBinaryString(c)).replace(' ', '0'),
+                ip = permute(binary, IP),
+                pi1 = Pi(ip, K1),
+                pi2 = Pi(nibbleSwap(pi1), K2);
+        return permute(pi2, IPInv);
+    }
+
+    private char ecb_decryptChar(String s) {
+        String ip = permute(s, IP),
+                pi2 = Pi(ip, K2),
+                pi1 = Pi(nibbleSwap(pi2), K1);
+        return (char) (Integer.parseInt(permute(pi1, IPInv), 2));
+    }
+
+    private String permute(String bits, int[] ordering) {
+        StringBuilder result = new StringBuilder();
+        for (int bit : ordering) {
+            result.append(bits.charAt(bit - 1));
+        }
+        return result.toString();
+    }
+
+    private String shift(String bits, int offset) {
+        return bits.substring(offset) + bits.substring(0, offset);
+    }
+
+    private String nibbleSwap(String bits) {
+        return bits.substring(4) + bits.substring(0, 4);
+    }
+
+    private String Pi(String bits, String key) {
+        String left = bits.substring(0, 4),
+                right = bits.substring(4),
+                t = T(right, key);
+
+        return XOR(left, t) + right;
+    }
+
+    private String T(String bits, String key) {
+        String s = XOR(permute(bits, T), key);
+        char[] chars = s.toCharArray();
+        int s0x = Integer.parseInt((chars[0] - '0') + "" + (chars[3] - '0'), 2),
+                s0y = Integer.parseInt((chars[1] - '0') + "" + (chars[2] - '0'), 2),
+                s1x = Integer.parseInt((chars[4] - '0') + "" + (chars[7] - '0'), 2),
+                s1y = Integer.parseInt((chars[5] - '0') + "" + (chars[6] - '0'), 2);
+        String s0 = S0[s0x][s0y],
+                s1 = S1[s1x][s1y];
+
+        return permute(s0 + s1, P4);
+    }
+
+    private String XOR(String a, String b) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < a.length(); i++) {
+            switch (String.valueOf(a.charAt(i)) + b.charAt(i)) {
                 case "00":
                 case "11":
-                    r += "0";
+                    result.append("0");
                     break;
                 default:
-                    r += "1";
+                    result.append("1");
             }
         }
-        return r;
-    }
-
-    private static String P4(String key) {
-        return String.valueOf(key.charAt(1)) +
-                key.charAt(3) +
-                key.charAt(2) +
-                key.charAt(0);
-    }
-
-    private static String P8(String key) {
-        while(key.length() > 8) {key = key.substring(1);}
-        return String.valueOf(key.charAt(3)) +
-                key.charAt(0) +
-                key.charAt(4) +
-                key.charAt(1) +
-                key.charAt(5) +
-                key.charAt(2) +
-                key.charAt(7) +
-                key.charAt(6);
-
-    }
-
-    private static String P10(String key) {
-        return String.valueOf(key.charAt(2)) +
-                key.charAt(4) +
-                key.charAt(1) +
-                key.charAt(6) +
-                key.charAt(3) +
-                key.charAt(9) +
-                key.charAt(0) +
-                key.charAt(8) +
-                key.charAt(7) +
-                key.charAt(5);
+        return result.toString();
     }
 }
