@@ -105,14 +105,14 @@
             <h2>Generate Knapsack Keys</h2>
             <form action="KnapsackKeygenServlet" method="post">
                 <label for="weight1">Superincreasing Weight Set:</label>
-                <input type="number" name="weight1" id="weight1" class="weight" required/>
-                <input type="number" name="weight2" id="weight2" class="weight" required/>
-                <input type="number" name="weight3" id="weight3" class="weight" required/>
-                <input type="number" name="weight4" id="weight4" class="weight" required/>
-                <input type="number" name="weight5" id="weight5" class="weight" required/>
-                <input type="number" name="weight6" id="weight6" class="weight" required/>
-                <input type="number" name="weight7" id="weight7" class="weight" required/>
-                <input type="number" name="weight8" id="weight8" class="weight" required/><br/><br/>
+                <input type="number" name="weight1" id="weight1" class="weight" placeholder="Weight 1" required/>
+                <input type="number" name="weight2" id="weight2" class="weight" placeholder="Weight 2" required/>
+                <input type="number" name="weight3" id="weight3" class="weight" placeholder="Weight 3" required/>
+                <input type="number" name="weight4" id="weight4" class="weight" placeholder="Weight 4" required/>
+                <input type="number" name="weight5" id="weight5" class="weight" placeholder="Weight 5" required/>
+                <input type="number" name="weight6" id="weight6" class="weight" placeholder="Weight 6" required/>
+                <input type="number" name="weight7" id="weight7" class="weight" placeholder="Weight 7" required/>
+                <input type="number" name="weight8" id="weight8" class="weight" placeholder="Weight 8" required/><br/><br/>
                 <label for="multiplier">Multiplier:</label>
                 <input type="number" id="multiplier" name="multiplier" placeholder="Multiplier" required/><br/><br/>
                 <label for="modulus">Modulus:</label>
@@ -125,14 +125,14 @@
             <h2>Encode a Message</h2>
             <form action="KnapsackServlet" method="post">
                 <label for="weight1">Receiver's Public Key Set:</label>
-                <input type="number" name="weight1" id="weight1" class="weight" required/>
-                <input type="number" name="weight2" id="weight2" class="weight" required/>
-                <input type="number" name="weight3" id="weight3" class="weight" required/>
-                <input type="number" name="weight4" id="weight4" class="weight" required/>
-                <input type="number" name="weight5" id="weight5" class="weight" required/>
-                <input type="number" name="weight6" id="weight6" class="weight" required/>
-                <input type="number" name="weight7" id="weight7" class="weight" required/>
-                <input type="number" name="weight8" id="weight8" class="weight" required/><br/><br/>
+                <input type="number" name="weight1" id="weight1" class="weight" placeholder="Weight 1" required/>
+                <input type="number" name="weight2" id="weight2" class="weight" placeholder="Weight 2" required/>
+                <input type="number" name="weight3" id="weight3" class="weight" placeholder="Weight 3" required/>
+                <input type="number" name="weight4" id="weight4" class="weight" placeholder="Weight 4" required/>
+                <input type="number" name="weight5" id="weight5" class="weight" placeholder="Weight 5" required/>
+                <input type="number" name="weight6" id="weight6" class="weight" placeholder="Weight 6" required/>
+                <input type="number" name="weight7" id="weight7" class="weight" placeholder="Weight 7" required/>
+                <input type="number" name="weight8" id="weight8" class="weight" placeholder="Weight 8" required/><br/><br/>
                 <label for="message" style="vertical-align: top;">Message:</label>
                 <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
                 <input type="hidden" name="encode-decode" id="encode-decode" value="encipher"/>
