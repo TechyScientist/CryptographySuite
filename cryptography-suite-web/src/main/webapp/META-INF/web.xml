@@ -32,8 +32,4 @@
         <servlet-name>BinarySimplifiedAESServlet</servlet-name>
         <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.block.BinarySimplifiedAESServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>RSAKeygenServlet</servlet-name>
-        <servlet-class>com.johnnyconsole.cryptographysuite.web.servlet.publickey.RSAKeygenServlet</servlet-class>
-    </servlet>
 </web-app>
