@@ -1,3 +1,4 @@
+<%@ page import="com.johnnyconsole.cryptographysuite.ejb.objects.EncodedString" %>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -129,7 +130,7 @@
                 <label for="message" style="vertical-align: top;">Message:</label>
                 <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
                 <input type="hidden" name="encode-decode" id="encode-decode" value="encipher"/>
-                <input type="submit" name="rsa-submit" id="rsa-encode-submit" value="Encrypt Message"/>
+                <input type="submit" name="rsa-encode-decode-submit" id="rsa-encode-decode-submit" value="Encrypt Message"/>
             </form>
         </div>
         <div>
@@ -142,7 +143,7 @@
                 <label for="message" style="vertical-align: top;">Message:</label>
                 <textarea name="message" id="message" placeholder="Message" required style="width: 250px; height: 125px; resize: none;"></textarea><br/><br/>
                 <input type="hidden" name="encode-decode" id="encode-decode" value="decipher"/>
-                <input type="submit" name="rsa-submit" id="rsa-encode-submit" value="Decrypt Message"/>
+                <input type="submit" name="rsa-encode-decode-submit" id="rsa-encode-decode-submit" value="Decrypt Message"/>
             </form>
         </div>
     </div><br/><br/>
@@ -166,10 +167,12 @@
             } %>
         </p>
 <%  } else if(request.getParameter("keygen") != null) {
-        HttpSession s = request.getSession();
-        long[] keypair = (long[]) s.getAttribute("rsa-keypair");
-        s.invalidate();  %>
+        long[] keypair = (long[]) session.getAttribute("rsa-keypair");
+        session.invalidate();  %>
         <p id="success">Generated Public Keyset: <strong>(n = <%= keypair[0] %>, e = <%= keypair[1] %>)</strong><br/>Generated Private Key: <strong>d = <%= keypair[2] %></strong></p>
+<% } else if(request.getParameter("encrypt") != null) {
+        EncodedString rsa = (EncodedString) session.getAttribute("rsa"); %>
+        <p id="success">The <%= rsa.method %>ed message is: <strong><%= rsa.string %></strong></p>
 <% } %>
 </div>
 
