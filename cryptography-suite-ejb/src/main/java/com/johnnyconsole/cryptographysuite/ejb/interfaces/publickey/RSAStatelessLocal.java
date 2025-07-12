@@ -6,8 +6,8 @@ import javax.ejb.Local;
 public interface RSAStatelessLocal {
 
     long[] generateKeypair(long p, long q, long e);
-    String encrypt(String msg, long key);
-    String decrypt(String msg, long key);
+    String encrypt(String msg, long key, long modulus);
+    String decrypt(String msg, long key, long modulus);
     String error();
 
 }

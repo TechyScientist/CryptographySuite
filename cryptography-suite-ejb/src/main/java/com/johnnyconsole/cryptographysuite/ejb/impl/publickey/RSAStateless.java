@@ -3,10 +3,16 @@ package com.johnnyconsole.cryptographysuite.ejb.impl.publickey;
 import com.johnnyconsole.cryptographysuite.ejb.interfaces.publickey.RSAStatelessLocal;
 
 import javax.ejb.Stateless;
+import java.math.BigInteger;
 
 @Stateless
 public class RSAStateless implements RSAStatelessLocal {
     private String error;
+
+    private String expMod(long a, long b, long n) {
+        return BigInteger.valueOf(a).modPow(BigInteger.valueOf(b), BigInteger.valueOf(n)).toString();
+
+    }
 
     @Override
     public long[] generateKeypair(long p, long q, long e) {
@@ -31,15 +37,26 @@ public class RSAStateless implements RSAStatelessLocal {
     }
 
     @Override
-    public String encrypt(String message, long key) {
-        //TODO: Implement RSA encryption function
-        return "";
+    public String encrypt(String message, long key, long modulus) {
+        StringBuilder ciphertext = new StringBuilder();
+
+        for(long p: message.toCharArray()) {
+            ciphertext.append(expMod(p, key, modulus)).append(' ');
+        }
+
+        return ciphertext.deleteCharAt(ciphertext.length() - 1).toString();
     }
 
     @Override
-    public String decrypt(String message, long key) {
-        //TODO: Implement RSA decryption function
-        return "";
+    public String decrypt(String message, long key, long modulus) {
+        StringBuilder plaintext = new StringBuilder();
+
+        String[] blocks = message.split(" ");
+
+        for (String block : blocks) {
+            plaintext.append((expMod(Long.parseLong(block), key, modulus))).append(' ');
+        }
+        return plaintext.toString();
     }
 
     public String error() {
